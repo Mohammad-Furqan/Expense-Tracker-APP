@@ -13,7 +13,7 @@ export async function fetchExpense(){
 
   const expenses=[];
 
-  console.log(response);
+  // console.log(response);
   for(const key in response.data){
     const expenseObj={
       id:key,
@@ -26,4 +26,12 @@ export async function fetchExpense(){
 
   return expenses;
 
+}
+
+export async function updateExpense(id,expenseData){
+  axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+}
+
+export function deleteExpense(id){
+  axios.delete(BACKEND_URL + `/expenses/${id}.json`); 
 }
